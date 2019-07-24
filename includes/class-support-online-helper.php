@@ -41,11 +41,11 @@ if ( ! class_exists( 'Support_Online_Helper' ) ) {
 				$status = '' . esc_html__( 'Support is ', SUPPORT_ONLINE_TEXTDOMAIN ) . '<span style=color:green;font-weight:bold>' . esc_attr__( 'Online,', SUPPORT_ONLINE_TEXTDOMAIN ) . '
                             </span> ' . esc_html__( 'We will be ', SUPPORT_ONLINE_TEXTDOMAIN ) . ' ' . esc_html__( 'offline ', SUPPORT_ONLINE_TEXTDOMAIN ) . ' 
                             ' . esc_html__( 'after ' . $hours . $minutes . ' Minutes' );
-						$on_day_arr =	so_get_option( 'so_working_day', 'general_setting_sec', '' )
+				$on_day_arr =	so_get_option( 'so_working_day', 'general_setting_sec', '' )
 				?>
                 <div class='mageso-onlice-sec'>
 					<?php echo $status; ?>
-					<h3><?php _e('Our office hours',SUPPORT_ONLINE_TEXTDOMAIN); ?> </h3>
+                    <h3><?php _e('Our office hours',SUPPORT_ONLINE_TEXTDOMAIN); ?> </h3>
 					<?php echo date_i18n( 'l', strtotime( current($on_day_arr) ) ); ?> – <?php echo date( 'l', strtotime( end($on_day_arr) ) ).' / '.date_i18n( 'h:i A', strtotime( $get_start_time ) ).' - '.date_i18n( 'h:i A', strtotime( $get_end_time ) ); ?>
                 </div>
 				<?php
@@ -90,8 +90,8 @@ if ( ! class_exists( 'Support_Online_Helper' ) ) {
 				?>
                 <div class='mageso-offline-sec'>
 					<?php echo $status; ?>
-					<h3><?php _e('Our office hours',SUPPORT_ONLINE_TEXTDOMAIN); ?> </h3>
-					<?php echo date_i18n( 'l', strtotime( current($on_day_arr) ) ); ?> – <?php echo date( 'l', strtotime( end($on_day_arr) ) ).' / '.date_i18n( 'h:i A', strtotime( $get_start_time ) ).' - '.date_i18n( 'h:i A', strtotime( $get_end_time ) ); ?>					
+                    <h3><?php _e('Our office hours',SUPPORT_ONLINE_TEXTDOMAIN); ?> </h3>
+					<?php echo date_i18n( 'l', strtotime( current($on_day_arr) ) ); ?> – <?php echo date( 'l', strtotime( end($on_day_arr) ) ).' / '.date_i18n( 'h:i A', strtotime( $get_start_time ) ).' - '.date_i18n( 'h:i A', strtotime( $get_end_time ) ); ?>
                 </div>
 				<?php
 			}
