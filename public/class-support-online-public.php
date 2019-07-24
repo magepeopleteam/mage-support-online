@@ -28,8 +28,6 @@ if ( ! class_exists( "Support_Online_Public" ) ) {
 		public function enqueue_styles() {
 			wp_enqueue_style( 'mageso-public-css', SUPPORT_PLUGIN_URL . 'public/css/style.css', array(), time(), 'all' );
 		}
-
-
 		public function enqueue_scripts() {
 
 			$scripts = array(
