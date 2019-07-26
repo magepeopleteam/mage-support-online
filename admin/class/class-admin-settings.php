@@ -3,20 +3,17 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
-
 /**
- * 2AM Awesome loginbar Settings Controls
- *
+ * MagePeople Settings API Bsed Setting Panel
  * @version 1.0
- *
  */
-if ( ! class_exists( 'Support_Online_Setting_Controls' ) ) {
-	class Support_Online_Setting_Controls {
+if ( ! class_exists( 'MAGESO_Support_Online_Setting_Controls' ) ) {
+	class MAGESO_Support_Online_Setting_Controls {
 
 		private $settings_api;
 
 		function __construct() {
-			$this->settings_api = new Support_Online_Setting_API;
+			$this->settings_api = new MAGESO_Support_Online_Setting_API;
 
 			add_action( 'admin_init', array( $this, 'admin_init' ) );
 			add_action( 'admin_menu', array( $this, 'create_options_page' ) );
@@ -34,8 +31,8 @@ if ( ! class_exists( 'Support_Online_Setting_Controls' ) ) {
 
 		function create_options_page() {
 			add_options_page(
-				esc_html__( 'Support Online', SUPPORT_ONLINE_TEXTDOMAIN ),
-				esc_html__( 'Support Online', SUPPORT_ONLINE_TEXTDOMAIN ),
+				esc_html__( 'Support Online', 'mage-support-online '),
+				esc_html__( 'Support Online', 'mage-support-online '),
 				'manage_options',
 				'mage-plugin_settings_page',
 				array( $this, 'display_options_page' )
@@ -46,7 +43,7 @@ if ( ! class_exists( 'Support_Online_Setting_Controls' ) ) {
 			$sections = array(
 				array(
 					'id'    => 'general_setting_sec',
-					'title' => __( 'Working Hours', SUPPORT_ONLINE_TEXTDOMAIN )
+					'title' => __( 'Working Hours', 'mage-support-online ')
 				)
 			);
 
@@ -65,47 +62,47 @@ if ( ! class_exists( 'Support_Online_Setting_Controls' ) ) {
 
 					array(
 						'name'    => 'so_working_day',
-						'label'   => __( 'Select working days', SUPPORT_ONLINE_TEXTDOMAIN ),
+						'label'   => __( 'Select working days', 'mage-support-online '),
 						'type'    => 'multicheck',
 						'options' => array(
-							'sat' => esc_html__( 'Saturday', SUPPORT_ONLINE_TEXTDOMAIN ),
-							'sun' => esc_html__( 'Sunday', SUPPORT_ONLINE_TEXTDOMAIN ),
-							'mon' => esc_html__( 'Monday   ', SUPPORT_ONLINE_TEXTDOMAIN ),
-							'tue' => esc_html__( 'Tuesday', SUPPORT_ONLINE_TEXTDOMAIN ),
-							'wed' => esc_html__( 'Wednesday', SUPPORT_ONLINE_TEXTDOMAIN ),
-							'thu' => esc_html__( 'Thursday', SUPPORT_ONLINE_TEXTDOMAIN ),
-							'fri' => esc_html__( 'Friday', SUPPORT_ONLINE_TEXTDOMAIN ),
+							'sat' => esc_html__( 'Saturday', 'mage-support-online '),
+							'sun' => esc_html__( 'Sunday', 'mage-support-online '),
+							'mon' => esc_html__( 'Monday   ', 'mage-support-online '),
+							'tue' => esc_html__( 'Tuesday', 'mage-support-online '),
+							'wed' => esc_html__( 'Wednesday', 'mage-support-online '),
+							'thu' => esc_html__( 'Thursday', 'mage-support-online '),
+							'fri' => esc_html__( 'Friday', 'mage-support-online '),
 						)
 					),
 
 					array(
 						'name'    => 'so_off_day',
-						'label'   => __( 'Select off days', SUPPORT_ONLINE_TEXTDOMAIN ),
+						'label'   => __( 'Select off days', 'mage-support-online '),
 						'type'    => 'multicheck',
 						'options' => array(
-							'sat' => esc_html__( 'Saturday', SUPPORT_ONLINE_TEXTDOMAIN ),
-							'sun' => esc_html__( 'Sunday', SUPPORT_ONLINE_TEXTDOMAIN ),
-							'mon' => esc_html__( 'Monday   ', SUPPORT_ONLINE_TEXTDOMAIN ),
-							'tue' => esc_html__( 'Tuesday', SUPPORT_ONLINE_TEXTDOMAIN ),
-							'wed' => esc_html__( 'Wednesday', SUPPORT_ONLINE_TEXTDOMAIN ),
-							'thu' => esc_html__( 'Thursday', SUPPORT_ONLINE_TEXTDOMAIN ),
-							'fri' => esc_html__( 'Friday', SUPPORT_ONLINE_TEXTDOMAIN ),
+							'sat' => esc_html__( 'Saturday', 'mage-support-online '),
+							'sun' => esc_html__( 'Sunday', 'mage-support-online '),
+							'mon' => esc_html__( 'Monday   ', 'mage-support-online '),
+							'tue' => esc_html__( 'Tuesday', 'mage-support-online '),
+							'wed' => esc_html__( 'Wednesday', 'mage-support-online '),
+							'thu' => esc_html__( 'Thursday', 'mage-support-online '),
+							'fri' => esc_html__( 'Friday', 'mage-support-online '),
 						)
 					),
 
 					array(
 						'name'  => 'so_start_time',
-						'label' => __( 'Enter start time', SUPPORT_ONLINE_TEXTDOMAIN ),
+						'label' => __( 'Enter start time', 'mage-support-online '),
 						'type'  => 'text',
-						'desc'  => esc_html__( 'Please enter support start time. Ex: 9.00 AM', SUPPORT_ONLINE_TEXTDOMAIN ),
+						'desc'  => esc_html__( 'Please enter support start time. Ex: 9.00 AM', 'mage-support-online '),
 
 					),
 
 					array(
 						'name'  => 'so_end_time',
-						'label' => __( 'Enter end time', SUPPORT_ONLINE_TEXTDOMAIN ),
+						'label' => __( 'Enter end time', 'mage-support-online '),
 						'type'  => 'text',
-						'desc'  => esc_html__( 'Please enter support end time.Ex: 6.00 PM', SUPPORT_ONLINE_TEXTDOMAIN ),
+						'desc'  => esc_html__( 'Please enter support end time.Ex: 6.00 PM', 'mage-support-online '),
 					),
 
 				),
@@ -140,13 +137,13 @@ if ( ! class_exists( 'Support_Online_Setting_Controls' ) ) {
 			return $pages_options;
 		}
 
-	}//end class Support_Online_Setting_Controls
+	}//end class MAGESO_Support_Online_Setting_Controls
 }//end class exist block
 
-$settings = new Support_Online_Setting_Controls();
+$settings = new MAGESO_Support_Online_Setting_Controls();
 
 
-function so_get_option( $option, $section, $default = '' ) {
+function mageso_get_option( $option, $section, $default = '' ) {
 	$options = get_option( $section );
 
 	if ( isset( $options[ $option ] ) ) {

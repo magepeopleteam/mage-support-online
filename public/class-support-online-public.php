@@ -4,12 +4,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 } // Cannot access pages directly.
 
 /**
- * @package    Mage_Plugin
- * @subpackage Mage_Plugin/public
  * @author     MagePeople team <magepeopleteam@gmail.com>
  */
-if ( ! class_exists( "Support_Online_Public" ) ) {
-	class Support_Online_Public {
+if ( ! class_exists( "MAGESO_Support_Online_Public" ) ) {
+	class MAGESO_Support_Online_Public {
 
 		private $plugin_name;
 
@@ -22,18 +20,18 @@ if ( ! class_exists( "Support_Online_Public" ) ) {
 		}
 
 		private function load_public_dependencies() {
-			require_once SUPPORT_ONLINE_DIR . 'public/shortcode/shortcode.php';
+			require_once MAGESO_SUPPORT_ONLINE_DIR . 'public/shortcode/shortcode.php';
 		}
 
 		public function enqueue_styles() {
-			wp_enqueue_style( 'mageso-public-css', SUPPORT_PLUGIN_URL . 'public/css/style.css', array(), time(), 'all' );
+			wp_enqueue_style( 'mageso-public-css', MAGESO_SUPPORT_PLUGIN_URL . 'public/css/style.css', array(), time(), 'all' );
 		}
 		public function enqueue_scripts() {
 
 			$scripts = array(
 				array(
 					'handle'     => 'so-public-js',
-					'src'        => SUPPORT_PLUGIN_URL . 'public/js/support-online-public.js',
+					'src'        => MAGESO_SUPPORT_PLUGIN_URL . 'public/js/support-online-public.js',
 					'dependency' => array( 'jquery' ),
 					'vertion'    => time(),
 					'in_footer'  => true
@@ -48,7 +46,7 @@ if ( ! class_exists( "Support_Online_Public" ) ) {
 		}
 
 
-	}//end class Support_Online_Public
+	}//end class MAGESO_Support_Online_Public
 }//end class block exist
 
-new Support_Online_Public();
+new MAGESO_Support_Online_Public();

@@ -6,25 +6,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Fired during plugin activation
- *
- * @link       https://mage-people.com
  * @since      1.0.0
- *
- * @package    support-online
- * @subpackage support-online/includes
- */
-/**
- * Fired during plugin activation.
- *
- * This class defines all code necessary to run during the plugin's activation.
- *
- * @since      1.0.0
- * @package    support-online
- * @subpackage support-online/includes
  * @author     magepeople <info@mage-people.com>
  */
-if ( ! class_exists( "Support_Online_Activator" ) ) {
-	class Support_Online_Activator {
+if ( ! class_exists( "MAGESO_Support_Online_Activator" ) ) {
+	class MAGESO_Support_Online_Activator {
 		/**
 		 * Short Description. (use period)
 		 *
@@ -37,5 +23,5 @@ if ( ! class_exists( "Support_Online_Activator" ) ) {
 		}
 
 
-	}//end Support_Online_Activator
+	}//end MAGESO_Support_Online_Activator
 }//end exist block

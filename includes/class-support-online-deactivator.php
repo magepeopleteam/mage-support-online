@@ -9,26 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @link       https://mage-people.com
  * @since      1.0.0
- *
- * @package    support-online
- * @subpackage support-online/includes
- */
-/**
- * Fired during plugin activation.
- *
- * This class defines all code necessary to run during the plugin's activation.
- *
- * @since      1.0.0
- * @package    support-online
- * @subpackage support-online/includes
  * @author     magepeople <info@mage-people.com>
  */
-if ( ! class_exists( "Support_Online_Dectivator" ) ) {
-	class Support_Online_Dectivator {
+if ( ! class_exists( "MAGESO_Support_Online_Dectivator" ) ) {
+	class MAGESO_Support_Online_Dectivator {
 		/**
-		 * Short Description. (use period)
-		 *
-		 * Long Description.
 		 *
 		 * @since    1.0.0
 		 */

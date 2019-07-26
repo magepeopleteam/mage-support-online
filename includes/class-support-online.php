@@ -10,9 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Mage_Plugin/includes
  * @author     MagePeople team <magepeopleteam@gmail.com>
  */
-if ( ! class_exists( "Support_Online_Loader" ) ) {
+if ( ! class_exists( "MAGESO_Support_Online_Loader" ) ) {
 
-	class Support_Online_Loader {
+	class MAGESO_Support_Online_Loader {
 
 		protected $loader;
 
@@ -29,11 +29,11 @@ if ( ! class_exists( "Support_Online_Loader" ) ) {
 		 * Load all dependencies.
 		 */
 		private function load_dependencies() {
-			require_once SUPPORT_ONLINE_DIR . 'lib/class-support-online-settings-api.php';
-			require_once SUPPORT_ONLINE_DIR . 'includes/class-support-online-loader.php';
-			require_once SUPPORT_ONLINE_DIR . 'admin/class-support-online-admin.php';
-			require_once SUPPORT_ONLINE_DIR . 'public/class-support-online-public.php';
-			$this->loader = new Support_Online_Plugin_Loader();
+			require_once MAGESO_SUPPORT_ONLINE_DIR . 'lib/class-support-online-settings-api.php';
+			require_once MAGESO_SUPPORT_ONLINE_DIR . 'includes/class-support-online-loader.php';
+			require_once MAGESO_SUPPORT_ONLINE_DIR . 'admin/class-support-online-admin.php';
+			require_once MAGESO_SUPPORT_ONLINE_DIR . 'public/class-support-online-public.php';
+			$this->loader = new MAGESO_Support_Online_Plugin_Loader();
 		}//end method load_dependencies
 
 
@@ -43,7 +43,7 @@ if ( ! class_exists( "Support_Online_Loader" ) ) {
 		public function load_plugin_textdomain() {
 
 			load_plugin_textdomain(
-				'support-online',
+				'mage-support-online',
 				false,
 				dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 			);
@@ -66,5 +66,5 @@ if ( ! class_exists( "Support_Online_Loader" ) ) {
 			$this->loader->run();
 		}
 
-	}//end class Support_Online_Loader
+	}//end class MAGESO_Support_Online_Loader
 }//end class exist block

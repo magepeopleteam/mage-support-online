@@ -5,11 +5,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-if ( ! class_exists( "Support_Online_Shortcode" ) ) {
+if ( ! class_exists( "MAGESO_Support_Online_Shortcode" ) ) {
 
-	class Support_Online_Shortcode {
+	class MAGESO_Support_Online_Shortcode {
 		public function __construct() {
-			add_shortcode( 'support-online', array( $this, 'display_support_online' ) );
+			add_shortcode( 'mage-support-online', array( $this, 'display_support_online' ) );
 		}
 
 		/**
@@ -22,17 +22,17 @@ if ( ! class_exists( "Support_Online_Shortcode" ) ) {
 		 */
 		public function display_support_online( $atts, $content = null ) {
 
-			$working_days = so_get_option( 'so_working_day', 'general_setting_sec', '' );
+			$working_days = mageso_get_option( 'so_working_day', 'general_setting_sec', '' );
 
 			if ( ! is_array( $working_days ) ) {
 				$working_days = array();
 			}
 
-			return Support_Online_Helper::supportStatus();
+			return MAGESO_Support_Online_Helper::supportStatus();
 
 		}//end method display_support_online
 
 
-	}//end class Support_Online_Shortcode
+	}//end class MAGESO_Support_Online_Shortcode
 }//end class exist block
-new Support_Online_Shortcode();
+new MAGESO_Support_Online_Shortcode();

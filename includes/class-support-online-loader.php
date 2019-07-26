@@ -5,27 +5,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 /**
  * Register all actions and filters for the plugin
- *
- * @link       mage-people.com
- * @since      1.0.0
- *
  * @package    Mage_Plugin
- * @subpackage Mage_Plugin/includes
- */
-
-/**
- * Register all actions and filters for the plugin.
- *
- * Maintain a list of all hooks that are registered throughout
- * the plugin, and register them with the WordPress API. Call the
- * run function to execute the list of actions and filters.
- *
- * @package    Mage_Plugin
- * @subpackage Mage_Plugin/includes
  * @author     MagePeople team <magepeopleteam@gmail.com>
  */
-if ( ! class_exists( "Support_Online_Plugin_Loader" ) ) {
-	class Support_Online_Plugin_Loader {
+if ( ! class_exists( "MAGESO_Support_Online_Plugin_Loader" ) ) {
+	class MAGESO_Support_Online_Plugin_Loader {
 
 		/**
 		 * The array of actions registered with WordPress.
@@ -140,5 +124,5 @@ if ( ! class_exists( "Support_Online_Plugin_Loader" ) ) {
 
 		}
 
-	}//end class Support_Online_Plugin_Loader
+	}//end class MAGESO_Support_Online_Plugin_Loader
 }//end exist block

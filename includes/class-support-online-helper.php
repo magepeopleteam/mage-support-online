@@ -1,14 +1,14 @@
 <?php
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
 /**
  * This is helper class of support plugin.
  */
-if ( ! class_exists( 'Support_Online_Helper' ) ) {
-	class Support_Online_Helper {
+if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
+	class MAGESO_Support_Online_Helper {
 		/**
 		 * This method is return the active and deactive status.
 		 *
@@ -17,17 +17,18 @@ if ( ! class_exists( 'Support_Online_Helper' ) ) {
 		public static function supportStatus() {
 
 			ob_start();
-
-			$get_start_time = so_get_option( 'so_start_time', 'general_setting_sec', '9:00 AM' );
-			$get_end_time   = so_get_option( 'so_end_time', 'general_setting_sec', '6:00 PM' );
+			$on_day  = mageso_get_option( 'so_working_day', 'general_setting_sec', '' );
+			$off_day = mageso_get_option( 'so_off_day', 'general_setting_sec', '' );
+			$get_start_time = mageso_get_option( 'so_start_time', 'general_setting_sec', '9:00 AM' );
+			$get_end_time   = mageso_get_option( 'so_end_time', 'general_setting_sec', '6:00 PM' );
 
 			$start_time = date( 'H:i:s', strtotime( $get_start_time ) );
 			$end_time   = date( 'H:i:s', strtotime( $get_end_time ) );
 
 			$current_time = current_time( 'H:i:s' );
-
-			if ( $current_time >= $start_time && $current_time <= $end_time ) {
-
+			$current_day  = date( 'D', strtotime(current_time('Y-m-d')) );
+			if ( in_array( strtolower( $current_day ), $on_day ) && $current_time >= $start_time && $current_time <= $end_time ) {
+				
 				$datetime1 = new DateTime( $end_time );
 				$datetime2 = new DateTime( $current_time );
 
@@ -38,22 +39,22 @@ if ( ! class_exists( 'Support_Online_Helper' ) ) {
 				$hours = $hours > 0 ? $hours . " Hours " : "";
 
 
-				$status = '' . esc_html__( 'Support is ', SUPPORT_ONLINE_TEXTDOMAIN ) . '<span style=color:green;font-weight:bold>' . esc_attr__( 'Online,', SUPPORT_ONLINE_TEXTDOMAIN ) . '
-                            </span> ' . esc_html__( 'We will be ', SUPPORT_ONLINE_TEXTDOMAIN ) . ' ' . esc_html__( 'offline ', SUPPORT_ONLINE_TEXTDOMAIN ) . ' 
+				$status = '' . esc_html__( 'Support is ', 'mage-support-online') . '<span style=color:green;font-weight:bold>' . esc_attr__( 'Online,', 'mage-support-online') . '
+                            </span> ' . esc_html__( 'We will be ', 'mage-support-online') . ' ' . esc_html__( 'Offline ', 'mage-support-online') . ' 
                             ' . esc_html__( 'after ' . $hours . $minutes . ' Minutes' );
-				$on_day_arr =	so_get_option( 'so_working_day', 'general_setting_sec', '' )
+				$on_day_arr =	mageso_get_option( 'so_working_day', 'general_setting_sec', '' )
 				?>
                 <div class='mageso-onlice-sec'>
 					<?php echo $status; ?>
-                    <h3><?php _e('Our office hours',SUPPORT_ONLINE_TEXTDOMAIN); ?> </h3>
+                    <h3><?php _e('Our office hours','mage-support-online'); ?> </h3>
 					<?php echo date_i18n( 'l', strtotime( current($on_day_arr) ) ); ?> – <?php echo date( 'l', strtotime( end($on_day_arr) ) ).' / '.date_i18n( 'h:i A', strtotime( $get_start_time ) ).' - '.date_i18n( 'h:i A', strtotime( $get_end_time ) ); ?>
                 </div>
 				<?php
 			} else {
 
-				$on_day  = so_get_option( 'so_working_day', 'general_setting_sec', '' );
-				$off_day = so_get_option( 'so_off_day', 'general_setting_sec', '' );
-				$on_day_arr =	so_get_option( 'so_working_day', 'general_setting_sec', '' );
+				$on_day  = mageso_get_option( 'so_working_day', 'general_setting_sec', '' );
+				$off_day = mageso_get_option( 'so_off_day', 'general_setting_sec', '' );
+				$on_day_arr =	mageso_get_option( 'so_working_day', 'general_setting_sec', '' );
 				if ( ! is_array( $on_day ) && ! is_array( $off_day ) ) {
 					$on_day  = array();
 					$off_day = array();
@@ -83,14 +84,14 @@ if ( ! class_exists( 'Support_Online_Helper' ) ) {
 
 				$day_text = $days > 0 ? $days . ' Days' : "";
 
-				$status = '' . esc_html__( 'Support is ', SUPPORT_ONLINE_TEXTDOMAIN ) . '<span style=color:red;font-weight:bold>' . esc_attr__( 'Offline,', SUPPORT_ONLINE_TEXTDOMAIN ) . '
-                            </span> ' . esc_html__( 'We will be ', SUPPORT_ONLINE_TEXTDOMAIN ) . "" . esc_html__( 'Online ', SUPPORT_ONLINE_TEXTDOMAIN ) .
+				$status = '' . esc_html__( 'Support is ', 'mage-support-online') . '<span style=color:red;font-weight:bold>' . esc_attr__( 'Offline,', 'mage-support-online') . '
+                            </span> ' . esc_html__( 'We will be ', 'mage-support-online') . "" . esc_html__( 'Online ', 'mage-support-online') .
 				          ' ' . __( 'after <b>' . $day_text . " " . $hours . ' Hours ' . $minutes . ' Minutes </b>' );
 
 				?>
                 <div class='mageso-offline-sec'>
 					<?php echo $status; ?>
-                    <h3><?php _e('Our office hours',SUPPORT_ONLINE_TEXTDOMAIN); ?> </h3>
+                    <h3><?php _e('Our office hours','mage-support-online'); ?> </h3>
 					<?php echo date_i18n( 'l', strtotime( current($on_day_arr) ) ); ?> – <?php echo date( 'l', strtotime( end($on_day_arr) ) ).' / '.date_i18n( 'h:i A', strtotime( $get_start_time ) ).' - '.date_i18n( 'h:i A', strtotime( $get_end_time ) ); ?>
                 </div>
 				<?php
@@ -111,5 +112,5 @@ if ( ! class_exists( 'Support_Online_Helper' ) ) {
 		}//end method supportStatus
 
 
-	}//end class Support_Online_Helper
+	}//end class MAGESO_Support_Online_Helper
 }//end class exist block, if codition

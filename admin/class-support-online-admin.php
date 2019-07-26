@@ -5,13 +5,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * @package    support-online
- * @subpackage support-online/admin
  * @author     MagePeople team <magepeopleteam@gmail.com>
  */
-if ( ! class_exists( "Support_Online_Admin" ) ) {
+if ( ! class_exists( "MAGESO_Support_Online_Admin_Base" ) ) {
 
-	class Support_Online_Admin {
+	class MAGESO_Support_Online_Admin_Base {
 
 		public function __construct() {
 
@@ -23,13 +21,13 @@ if ( ! class_exists( "Support_Online_Admin" ) ) {
 
 		public function enqueue_styles() {
 
-			wp_enqueue_style( 'mage-admin-css', SUPPORT_ONLINE_DIR . 'css/mage-plugin-admin.css', array(), time(), 'all' );
+			wp_enqueue_style( 'mageso-admin-admin-css', MAGESO_SUPPORT_ONLINE_DIR . 'css/mage-plugin-admin.css', array(), time(), 'all' );
 
 		}//end method enqueue_styles
 
 		public function enqueue_scripts() {
 
-			wp_enqueue_script( 'mage-plugin-js', SUPPORT_ONLINE_DIR . 'js/mage-plugin-admin.js', array( 'jquery' ), time(), false );
+			wp_enqueue_script( 'mageso-admin-plugin-js', MAGESO_SUPPORT_ONLINE_DIR . 'js/mage-plugin-admin.js', array( 'jquery' ), time(), false );
 
 		}//end method enqueue_scripts
 
@@ -38,11 +36,11 @@ if ( ! class_exists( "Support_Online_Admin" ) ) {
 		 * This function will load all the dependencies.
 		 */
 		private function load_admin_dependencies() {
-			require_once SUPPORT_ONLINE_DIR . 'admin/class/class-admin-settings.php';
+			require_once MAGESO_SUPPORT_ONLINE_DIR . 'admin/class/class-admin-settings.php';
 		}//end method load_admin_dependencies
 
 
-	}//end class Support_Online_Admin
+	}//end class MAGESO_Support_Online_Base
 }// class exist block
 
-new Support_Online_Admin();
+new MAGESO_Support_Online_Admin_Base();

@@ -16,7 +16,7 @@ Mage Support Online is a simple plugin to show support online status.
 
 == Description ==
 After installation please go to Settingss -> Support Online from the dashboard, Select Your working and offdays with start & end time and hit the save button.
-Use [support-online] shortcode to view the support online/offline status, on anywhere in your website.
+Use [mage-support-online] shortcode to view the support online/offline status, on anywhere in your website.
 
 
 == Installation ==
