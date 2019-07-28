@@ -51,14 +51,9 @@ if ( ! class_exists( "MAGESO_Support_Online_Public" ) ) {
 
 
 		public function mageso_get_our_time(){
-			echo current_time('H:i:s');
-			die();
+			echo current_time('h:i:s');
+			exit();
 		}
-
-
-
-
-		
 
 	}//end class MAGESO_Support_Online_Public
 }//end class block exist
