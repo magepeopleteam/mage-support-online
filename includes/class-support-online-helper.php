@@ -99,7 +99,7 @@ if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
 			?>
             <div class='mageso-show-current-time'>
                 <span class="current_date"></span> |
-                <span><?php echo "Our time : " . current_time( 'H:i:s' ); ?></span>
+                <span><?php echo "Our time : <span id='mage_our_time'>" . current_time( 'H:i:s' ); ?></span></span>
             </div>
 			<?php
 

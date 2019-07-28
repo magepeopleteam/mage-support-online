@@ -17,6 +17,9 @@ if ( ! class_exists( "MAGESO_Support_Online_Public" ) ) {
 			$this->load_public_dependencies();
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+			add_action('wp_enqueue_scripts',array($this,'ajax_call_url'));
+			add_action('wp_ajax_mageso_get_our_time', array($this,'mageso_get_our_time'));
+			add_action('wp_ajax_mageso_get_our_time', array($this,'mageso_get_our_time'));
 		}
 
 		private function load_public_dependencies() {
@@ -41,10 +44,21 @@ if ( ! class_exists( "MAGESO_Support_Online_Public" ) ) {
 			foreach ( $scripts as $script ) {
 				wp_enqueue_script( $script['handle'], $script['src'], $script['dependency'][0], $script['vertion'], $script['in_footer'] );
 			}
-
-
+		}
+		public function ajax_call_url(){
+			wp_localize_script('jquery', 'mageso_ajax', array( 'mageso_ajaxurl' => admin_url( 'admin-ajax.php')));
 		}
 
+
+		public function mageso_get_our_time(){
+			echo current_time('H:i:s');
+			die();
+		}
+
+
+
+
+		
 
 	}//end class MAGESO_Support_Online_Public
 }//end class block exist
