@@ -31,8 +31,8 @@ if ( ! class_exists( 'MAGESO_Support_Online_Setting_Controls' ) ) {
 
 		function create_options_page() {
 			add_options_page(
-				esc_html__( 'Support Online', 'mage-support-online '),
-				esc_html__( 'Support Online', 'mage-support-online '),
+				esc_html__( 'Support Online', 'mage-support-online ' ),
+				esc_html__( 'Support Online', 'mage-support-online ' ),
 				'manage_options',
 				'mage-plugin_settings_page',
 				array( $this, 'display_options_page' )
@@ -43,8 +43,12 @@ if ( ! class_exists( 'MAGESO_Support_Online_Setting_Controls' ) ) {
 			$sections = array(
 				array(
 					'id'    => 'general_setting_sec',
-					'title' => __( 'Working Hours', 'mage-support-online ')
-				)
+					'title' => __( 'Working Hours', 'mage-support-online ' )
+				),
+				array(
+					'id'    => 'general_setting_section_timepicker',
+					'title' => __( 'Colors', 'mage-support-online ' )
+				),
 			);
 
 			return $sections;
@@ -58,53 +62,142 @@ if ( ! class_exists( 'MAGESO_Support_Online_Setting_Controls' ) ) {
 		 */
 		function get_settings_fields() {
 			$settings_fields = array(
-				'general_setting_sec' => array(
+
+				'general_setting_sec'                => array(
 
 					array(
 						'name'    => 'so_working_day',
-						'label'   => __( 'Select working days', 'mage-support-online '),
+						'label'   => __( 'Select working days', 'mage-support-online ' ),
 						'type'    => 'multicheck',
 						'options' => array(
-							'sat' => esc_html__( 'Saturday', 'mage-support-online '),
-							'sun' => esc_html__( 'Sunday', 'mage-support-online '),
-							'mon' => esc_html__( 'Monday   ', 'mage-support-online '),
-							'tue' => esc_html__( 'Tuesday', 'mage-support-online '),
-							'wed' => esc_html__( 'Wednesday', 'mage-support-online '),
-							'thu' => esc_html__( 'Thursday', 'mage-support-online '),
-							'fri' => esc_html__( 'Friday', 'mage-support-online '),
+							'sat' => esc_html__( 'Saturday', 'mage-support-online ' ),
+							'sun' => esc_html__( 'Sunday', 'mage-support-online ' ),
+							'mon' => esc_html__( 'Monday   ', 'mage-support-online ' ),
+							'tue' => esc_html__( 'Tuesday', 'mage-support-online ' ),
+							'wed' => esc_html__( 'Wednesday', 'mage-support-online ' ),
+							'thu' => esc_html__( 'Thursday', 'mage-support-online ' ),
+							'fri' => esc_html__( 'Friday', 'mage-support-online ' ),
 						)
 					),
 
 					array(
 						'name'    => 'so_off_day',
-						'label'   => __( 'Select off days', 'mage-support-online '),
+						'label'   => __( 'Select off days', 'mage-support-online ' ),
 						'type'    => 'multicheck',
 						'options' => array(
-							'sat' => esc_html__( 'Saturday', 'mage-support-online '),
-							'sun' => esc_html__( 'Sunday', 'mage-support-online '),
-							'mon' => esc_html__( 'Monday   ', 'mage-support-online '),
-							'tue' => esc_html__( 'Tuesday', 'mage-support-online '),
-							'wed' => esc_html__( 'Wednesday', 'mage-support-online '),
-							'thu' => esc_html__( 'Thursday', 'mage-support-online '),
-							'fri' => esc_html__( 'Friday', 'mage-support-online '),
+							'sat' => esc_html__( 'Saturday', 'mage-support-online ' ),
+							'sun' => esc_html__( 'Sunday', 'mage-support-online ' ),
+							'mon' => esc_html__( 'Monday   ', 'mage-support-online ' ),
+							'tue' => esc_html__( 'Tuesday', 'mage-support-online ' ),
+							'wed' => esc_html__( 'Wednesday', 'mage-support-online ' ),
+							'thu' => esc_html__( 'Thursday', 'mage-support-online ' ),
+							'fri' => esc_html__( 'Friday', 'mage-support-online ' ),
 						)
 					),
 
 					array(
 						'name'  => 'so_start_time',
-						'label' => __( 'Enter start time', 'mage-support-online '),
-						'type'  => 'text',
-						'desc'  => esc_html__( 'Please enter support start time. Ex: 9.00 AM', 'mage-support-online '),
+						'label' => __( 'Enter start time', 'mage-support-online ' ),
+						'type'  => 'timepicker',
+						'desc'  => esc_html__( 'Please enter support start time. Ex: 9.00 AM', 'mage-support-online ' ),
 
 					),
 
 					array(
 						'name'  => 'so_end_time',
-						'label' => __( 'Enter end time', 'mage-support-online '),
-						'type'  => 'text',
-						'desc'  => esc_html__( 'Please enter support end time.Ex: 6.00 PM', 'mage-support-online '),
+						'label' => __( 'Enter end time', 'mage-support-online ' ),
+						'type'  => 'timepicker',
+						'desc'  => esc_html__( 'Please enter support end time.Ex: 6.00 PM', 'mage-support-online ' ),
 					),
 
+					// start week day
+					array(
+						'name'    => 'start_weekday',
+						'label'   => __( 'Enter start weekday', 'mage-support-online ' ),
+						'type'    => 'text',
+						'desc'    => esc_html__( 'Ex : sunday', 'mage-support-online ' ),
+						'default' => __( 'Sunday', 'mage-support-online ' )
+					),
+
+					// end week day
+					array(
+						'name'    => 'end_weekday',
+						'label'   => __( 'Enter end weekday', 'mage-support-online ' ),
+						'type'    => 'text',
+						'desc'    => esc_html__( 'Ex : Thesday', 'mage-support-online ' ),
+						'default' => __( 'Thesday', 'mage-support-online ' )
+					),
+				),
+				'general_setting_section_timepicker' => array(
+					//  online sections
+					array(
+						'name'    => 'online_color_sections',
+						'desc'    => __( 'Select your text color', 'mage-support-online' ),
+						'type'    => 'sections',
+						'default' => 'Online'
+					),
+
+					// border color
+					array(
+						'name'    => 'border_color',
+						'label'   => __( 'Online Border color', 'mage-support-online' ),
+						'desc'    => __( 'Select your online border color', 'mage-support-online' ),
+						'type'    => 'color',
+						'default' => ''
+					),
+
+					// background color
+					array(
+						'name'    => 'background_color',
+						'label'   => __( 'Online Background color', 'mage-support-online' ),
+						'desc'    => __( 'Select your online background color', 'mage-support-online' ),
+						'type'    => 'color',
+						'default' => ''
+					),
+
+					//  text color
+					array(
+						'name'    => 'text_color',
+						'label'   => __( 'Online Text color', 'mage-support-online' ),
+						'desc'    => __( 'Select your online text color', 'mage-support-online' ),
+						'type'    => 'color',
+						'default' => ''
+					),
+
+					//  offline sections
+					array(
+						'name'    => 'offline_color_sections',
+						'desc'    => __( 'Select your offline text color', 'mage-support-online' ),
+						'type'    => 'sections',
+						'default' => 'Offline'
+					),
+
+					// border color
+					array(
+						'name'    => 'offline_border_color',
+						'label'   => __( 'Offline Border color', 'mage-support-online' ),
+						'desc'    => __( 'Select your offline border color', 'mage-support-online' ),
+						'type'    => 'color',
+						'default' => ''
+					),
+
+					// background color
+					array(
+						'name'    => 'offline_background_color',
+						'label'   => __( 'Offline Background color', 'mage-support-online' ),
+						'desc'    => __( 'Select your offline background color', 'mage-support-online' ),
+						'type'    => 'color',
+						'default' => ''
+					),
+
+					//  text color
+					array(
+						'name'    => 'offline_text_color',
+						'label'   => __( 'Offline Text color', 'mage-support-online' ),
+						'desc'    => __( 'Select your offline text color', 'mage-support-online' ),
+						'type'    => 'color',
+						'default' => ''
+					),
 				),
 			);
 
