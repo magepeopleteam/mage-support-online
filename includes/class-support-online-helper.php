@@ -17,10 +17,11 @@ if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
 		public static function supportStatus() {
 
 			ob_start();
-			$on_day  = mageso_get_option( 'so_working_day', 'general_setting_sec', '' );
-			$off_day = mageso_get_option( 'so_off_day', 'general_setting_sec', '' );
+			$on_day  = mageso_get_option( 'so_working_day', 'general_setting_sec', array() );
+			$off_day = mageso_get_option( 'so_off_day', 'general_setting_sec', array() );
 			$get_start_time = mageso_get_option( 'so_start_time', 'general_setting_sec', '9:00 AM' );
 			$get_end_time   = mageso_get_option( 'so_end_time', 'general_setting_sec', '6:00 PM' );
+if(sizeof($on_day)>0){
 
 			$start_time = date( 'H:i:s', strtotime( $get_start_time ) );
 			$end_time   = date( 'H:i:s', strtotime( $get_end_time ) );
@@ -52,9 +53,9 @@ if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
 				<?php
 			} else {
 
-				$on_day  = mageso_get_option( 'so_working_day', 'general_setting_sec', '' );
-				$off_day = mageso_get_option( 'so_off_day', 'general_setting_sec', '' );
-				$on_day_arr =	mageso_get_option( 'so_working_day', 'general_setting_sec', '' );
+				$on_day  = mageso_get_option( 'so_working_day', 'general_setting_sec', array() );
+				$off_day = mageso_get_option( 'so_off_day', 'general_setting_sec', array() );
+				$on_day_arr =	mageso_get_option( 'so_working_day', 'general_setting_sec', array() );
 				if ( ! is_array( $on_day ) && ! is_array( $off_day ) ) {
 					$on_day  = array();
 					$off_day = array();
@@ -70,9 +71,10 @@ if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
 					date( 'Y-m-d', strtotime( " +$in_pos day" ) );
 					$next_working_day = date( 'Y-m-d', strtotime( " +$in_pos day" ) ) . ' ' . $start_time;
 				}
+				$in_pos = (int) array_search( strtolower( $next_day ), $off_day ) + 1 + count( $off_day );
 
 				$current_time = current_time( 'Y-m-d H:i:s' );
-
+				$next_working_day = date( 'Y-m-d', strtotime( " +$in_pos day" ) ) . ' ' . $start_time;
 				$start_time = date( 'Y-m-d H:i:s', strtotime( $next_working_day ) );
 				$datetime1  = new DateTime( $start_time );
 				$datetime2  = new DateTime( $current_time );
@@ -102,7 +104,13 @@ if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
                 <span><?php echo "Our time : <span id='mage_our_time'>" . current_time( 'h:i:s' ); ?></span></span>
             </div>
 			<?php
-
+}else{
+	?>
+                <div class='mageso-offline-sec'>
+					<?php _e('No settings found. Please Set your Working & Weekend Day from the Dashboard','mage-support-online'); ?>
+                </div>
+	<?php
+}
 			$support_status = ob_get_contents();
 
 			ob_get_clean();
