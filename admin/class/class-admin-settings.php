@@ -239,7 +239,7 @@ $settings = new MAGESO_Support_Online_Setting_Controls();
 function mageso_get_option( $option, $section, $default = '' ) {
 	$options = get_option( $section );
 
-	if ( isset( $options[ $option ] ) ) {
+	if ( isset( $options[ $option ] ) && !empty($options[ $option ])) {
 		return $options[ $option ];
 	}
 

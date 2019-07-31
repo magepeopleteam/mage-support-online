@@ -20,6 +20,7 @@ if ( ! class_exists( "MAGESO_Support_Online_Public" ) ) {
 			add_action('wp_enqueue_scripts',array($this,'ajax_call_url'));
 			add_action('wp_ajax_mageso_get_our_time', array($this,'mageso_get_our_time'));
 			add_action('wp_ajax_mageso_get_our_time', array($this,'mageso_get_our_time'));
+			add_action('wp_head', array($this,'mageso_custom_style'));
 		}
 
 		private function load_public_dependencies() {
@@ -54,6 +55,59 @@ if ( ! class_exists( "MAGESO_Support_Online_Public" ) ) {
 			echo current_time('h:i:s');
 			exit();
 		}
+
+
+public function mageso_custom_style(){
+
+$online_border_color = mageso_get_option( 'border_color', 'general_setting_section_timepicker', 'green' );
+$online_bg_color = mageso_get_option( 'background_color', 'general_setting_section_timepicker', '#f0fff0' );
+$online_text_color = mageso_get_option( 'text_color', 'general_setting_section_timepicker', '#000' );
+
+
+$offline_border_color = mageso_get_option( 'offline_border_color', 'general_setting_section_timepicker', 'red' );
+$offline_bg_color = mageso_get_option( 'offline_background_color', 'general_setting_section_timepicker', '#ffe9e9' );
+$offline_text_color = mageso_get_option( 'offline_text_color', 'general_setting_section_timepicker', '#000' );
+
+
+?>
+<style>
+
+
+
+.mageso-onlice-sec {
+    border: 5px solid <?php echo $online_border_color; ?>;
+    background: <?php echo $online_bg_color; ?>;
+    color: <?php echo $online_text_color; ?>;
+}
+.mageso-onlice-sec h3, .mageso-onlice-sec span{
+	color: <?php echo $online_text_color; ?>!important;
+}
+
+.mageso-offline-sec{
+    border: 5px solid <?php echo $offline_border_color; ?>;
+    background: <?php echo $offline_bg_color; ?>;
+    color: <?php echo $offline_text_color; ?>;
+}
+.mageso-offline-sec h3, .mageso-offline-sec span{
+	color: <?php echo $offline_text_color; ?>!important;
+}
+.mageso-show-current-time {
+    background: #52514b;
+    color: #fff;
+}
+
+
+</style>
+	<?php
+}
+
+
+
+
+
+
+
+
 
 	}//end class MAGESO_Support_Online_Public
 }//end class block exist
