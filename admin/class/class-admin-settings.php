@@ -47,7 +47,7 @@ if ( ! class_exists( 'MAGESO_Support_Online_Setting_Controls' ) ) {
 				),
 				array(
 					'id'    => 'general_setting_section_timepicker',
-					'title' => __( 'Colors', 'mage-support-online ' )
+					'title' => __( 'Style & Colors', 'mage-support-online ' )
 				),
 			);
 
@@ -215,6 +215,37 @@ if ( ! class_exists( 'MAGESO_Support_Online_Setting_Controls' ) ) {
 						'type'    => 'color',
 						'default' => ''
 					),
+					//  online sections
+					array(
+						'name'    => 'online_clock_sections',
+						'desc'    => __( 'Select your text color', 'mage-support-online' ),
+						'type'    => 'sections',
+						'default' => 'Your & Our Time Section'
+					),
+					// background color
+					array(
+						'name'    => 'clock_background_color',
+						'label'   => __( 'Background color', 'mage-support-online' ),
+						'desc'    => __( 'Please Select background color', 'mage-support-online' ),
+						'type'    => 'color',
+						'default' => '#000000'
+					),
+
+					//  text color
+					array(
+						'name'    => 'clock_text_color',
+						'label'   => __( 'Text color', 'mage-support-online' ),
+						'desc'    => __( 'Please Select text color', 'mage-support-online' ),
+						'type'    => 'color',
+						'default' => '#fff'
+					),
+
+
+
+
+
+
+
 				),
 			);
 

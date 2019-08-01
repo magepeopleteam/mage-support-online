@@ -68,6 +68,8 @@ $offline_border_color = mageso_get_option( 'offline_border_color', 'general_sett
 $offline_bg_color = mageso_get_option( 'offline_background_color', 'general_setting_section_timepicker', '#ffe9e9' );
 $offline_text_color = mageso_get_option( 'offline_text_color', 'general_setting_section_timepicker', '#000' );
 
+$clock_bg_color = mageso_get_option( 'clock_background_color', 'general_setting_section_timepicker', '#000' );
+$clock_text_color = mageso_get_option( 'clock_text_color', 'general_setting_section_timepicker', '#fff' );
 
 ?>
 <style>
@@ -91,9 +93,10 @@ $offline_text_color = mageso_get_option( 'offline_text_color', 'general_setting_
 .mageso-offline-sec h3, .mageso-offline-sec span{
 	color: <?php echo $offline_text_color; ?>!important;
 }
+
 .mageso-show-current-time {
-    background: #52514b;
-    color: #fff;
+    background: <?php echo $clock_bg_color; ?>;
+    color: <?php echo $clock_text_color; ?>;
 }
 
 

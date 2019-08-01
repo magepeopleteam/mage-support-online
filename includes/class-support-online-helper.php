@@ -21,6 +21,8 @@ if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
 			$off_day = mageso_get_option( 'so_off_day', 'general_setting_sec', array() );
 			$get_start_time = mageso_get_option( 'so_start_time', 'general_setting_sec', '9:00 AM' );
 			$get_end_time   = mageso_get_option( 'so_end_time', 'general_setting_sec', '6:00 PM' );
+			$get_week_start_day   = mageso_get_option( 'start_weekday', 'general_setting_sec', 'Sunday' );
+			$get_week_end_day   = mageso_get_option( 'end_weekday', 'general_setting_sec', 'Friday' );
 if(sizeof($on_day)>0){
 
 			$start_time = date( 'H:i:s', strtotime( $get_start_time ) );
@@ -48,7 +50,7 @@ if(sizeof($on_day)>0){
                 <div class='mageso-onlice-sec'>
 					<?php echo $status; ?>
                     <h3><?php _e('Our office hours','mage-support-online'); ?> </h3>
-					<?php echo date_i18n( 'l', strtotime( current($on_day_arr) ) ); ?> – <?php echo date( 'l', strtotime( end($on_day_arr) ) ).' / '.date_i18n( 'h:i A', strtotime( $get_start_time ) ).' - '.date_i18n( 'h:i A', strtotime( $get_end_time ) ); ?>
+					<?php echo date_i18n( 'l', strtotime( $get_week_start_day ) ); ?> – <?php echo date( 'l', strtotime( $get_week_end_day ) ).' / '.date_i18n( 'h:i A', strtotime( $get_start_time ) ).' - '.date_i18n( 'h:i A', strtotime( $get_end_time ) ); ?>
                 </div>
 				<?php
 			} else {
@@ -94,7 +96,7 @@ if(sizeof($on_day)>0){
                 <div class='mageso-offline-sec'>
 					<?php echo $status; ?>
                     <h3><?php _e('Our office hours','mage-support-online'); ?> </h3>
-					<?php echo date_i18n( 'l', strtotime( current($on_day_arr) ) ); ?> – <?php echo date( 'l', strtotime( end($on_day_arr) ) ).' / '.date_i18n( 'h:i A', strtotime( $get_start_time ) ).' - '.date_i18n( 'h:i A', strtotime( $get_end_time ) ); ?>
+					<?php echo date_i18n( 'l', strtotime( $get_week_start_day ) ); ?> – <?php echo date( 'l', strtotime( $get_week_end_day ) ).' / '.date_i18n( 'h:i A', strtotime( $get_start_time ) ).' - '.date_i18n( 'h:i A', strtotime( $get_end_time ) ); ?>
                 </div>
 				<?php
 			}
