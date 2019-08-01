@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Mage Support Online
  * Description:       This plugin will show your online status like active and deactive. and when support will be offline or online.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            MagePeopleTeam
  * Author URI:        mage-people.com
  * Text Domain:       mage-support-online
