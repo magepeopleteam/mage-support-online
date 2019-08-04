@@ -23,13 +23,15 @@ if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
 			$get_end_time   = mageso_get_option( 'so_end_time', 'general_setting_sec', '6:00 PM' );
 			$get_week_start_day   = mageso_get_option( 'start_weekday', 'general_setting_sec', 'Sunday' );
 			$get_week_end_day   = mageso_get_option( 'end_weekday', 'general_setting_sec', 'Friday' );
-if(sizeof($on_day)>0){
-
 			$start_time = date( 'H:i:s', strtotime( $get_start_time ) );
 			$end_time   = date( 'H:i:s', strtotime( $get_end_time ) );
 
 			$current_time = current_time( 'H:i:s' );
 			$current_day  = date( 'D', strtotime(current_time('Y-m-d')) );
+
+if(sizeof($on_day)>0){
+
+
 			if ( in_array( strtolower( $current_day ), $on_day ) && $current_time >= $start_time && $current_time <= $end_time ) {
 				
 				$datetime1 = new DateTime( $end_time );
@@ -64,24 +66,27 @@ if(sizeof($on_day)>0){
 				}
 
 				$next_date = date( 'Y-m-d', strtotime( " +1 day" ) );
-				$next_day  = date( 'D', strtotime( $next_date ) );
+			$next_day  = date( 'D', strtotime( $next_date ) );
 
 				if ( in_array( strtolower( $next_day ), $on_day ) ) {
 					$next_working_day = $next_date . ' ' . $start_time;
 				} elseif ( in_array( strtolower( $next_day ), $off_day ) ) {
+
 					$in_pos = (int) array_search( strtolower( $next_day ), $off_day ) + 1 + count( $off_day );
+
 					date( 'Y-m-d', strtotime( " +$in_pos day" ) );
 					$next_working_day = date( 'Y-m-d', strtotime( " +$in_pos day" ) ) . ' ' . $start_time;
 				}
-				$in_pos = (int) array_search( strtolower( $next_day ), $off_day ) + 1 + count( $off_day );
 
+
+				// echo $next_working_day;
 				$current_time = current_time( 'Y-m-d H:i:s' );
-				$next_working_day = date( 'Y-m-d', strtotime( " +$in_pos day" ) ) . ' ' . $start_time;
+				// $next_working_day = date( 'Y-m-d', strtotime( " +$in_pos day" ) ) . ' ' . $start_time;
 				$start_time = date( 'Y-m-d H:i:s', strtotime( $next_working_day ) );
 				$datetime1  = new DateTime( $start_time );
 				$datetime2  = new DateTime( $current_time );
 				$interval   = date_diff( $datetime1, $datetime2 );
-				// print_r($interval);
+				// print_r($off_day);
 				$days    = $interval->days;
 				$hours   = $interval->h;
 				$minutes = $interval->i;

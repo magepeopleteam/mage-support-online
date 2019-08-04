@@ -50,7 +50,7 @@ if ( ! class_exists( 'MAGESO_Support_Online_Setting_Controls' ) ) {
 					'title' => __( 'Style & Colors', 'mage-support-online ' )
 				),
 			);
-
+			do_action('mage_support_setting_tab',$sections );
 			return $sections;
 		}
 
@@ -239,13 +239,6 @@ if ( ! class_exists( 'MAGESO_Support_Online_Setting_Controls' ) ) {
 						'type'    => 'color',
 						'default' => '#fff'
 					),
-
-
-
-
-
-
-
 				),
 			);
 
@@ -280,7 +273,7 @@ if ( ! class_exists( 'MAGESO_Support_Online_Setting_Controls' ) ) {
 
 	}//end class MAGESO_Support_Online_Setting_Controls
 }//end class exist block
-
+global $settings;
 $settings = new MAGESO_Support_Online_Setting_Controls();
 
 
