@@ -276,7 +276,8 @@ if ( ! class_exists( 'MAGESO_Support_Online_Setting_Controls' ) ) {
 global $settings;
 $settings = new MAGESO_Support_Online_Setting_Controls();
 
-
+if(!function_exists('mageso_get_option')){
+	
 function mageso_get_option( $option, $section, $default = '' ) {
 	$options = get_option( $section );
 
@@ -285,4 +286,5 @@ function mageso_get_option( $option, $section, $default = '' ) {
 	}
 
 	return $default;
+}
 }
