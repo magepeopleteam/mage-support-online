@@ -48,8 +48,7 @@ if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
 					<?php
 				} else {
 
-					$status = MAGESO_Support_Online_Helper::offlineStatus( $on_day, $off_day,
-						$start_time, '' );
+					$status = MAGESO_Support_Online_Helper::offlineStatus( $on_day, $off_day, $start_time );
 
 					?>
                     <div class='mageso-offline-sec'>
@@ -121,14 +120,14 @@ if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
 		 *
 		 * @return string
 		 */
-		public static function offlineStatus( $on_day, $off_day, $start_time, $current_day ) {
+		public static function offlineStatus( $on_day, $off_day, $start_time ) {
 
 			if ( ! is_array( $on_day ) && ! is_array( $off_day ) ) {
 				$on_day  = array();
 				$off_day = array();
 			}
 
-			$next_date = date( 'Y-m-d', strtotime( " +1 day" ) );
+			$next_date = date( 'Y-m-d', strtotime( " +1 weekday" ) );
 			$next_day  = date( 'D', strtotime( $next_date ) );
 
 			if ( in_array( strtolower( $next_day ), $on_day ) ) {
@@ -137,17 +136,28 @@ if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
 
 			} elseif ( in_array( strtolower( $next_day ), $off_day ) ) {
 
-				$current_day = strtolower( $current_day );
+				$i = 1;
 
-				
+				while ( in_array( strtolower( $next_day ), $off_day ) ) {
 
-				$in_pos = (int) array_search( strtolower( $next_day ), $off_day ) + 1 + count( $off_day );
+					$i ++;
+
+					$next_date = date( 'Y-m-d', strtotime( " +$i day" ) );
+					$next_day  = strtolower( date( 'D', strtotime( $next_date ) ) );
+
+					$todal_number_of_days = $i;
+
+				}
+
+				$in_pos = (int) $todal_number_of_days;
 
 				date( 'Y-m-d', strtotime( " +$in_pos day" ) );
 				$next_working_day = date( 'Y-m-d', strtotime( " +$in_pos day" ) ) . ' ' . $start_time;
+
 			} else {
 
-				$in_pos           = (int) array_search( strtolower( $next_day ), $off_day ) + 1 + count( $off_day );
+				$in_pos           = (int) array_search( strtolower( $next_day ), $off_day ) + 1 + count(
+						$off_day );
 				$next_working_day = date( 'Y-m-d', strtotime( " +$in_pos day" ) ) . ' ' .
 				                    $start_time;
 			}
