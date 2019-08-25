@@ -34,12 +34,12 @@ if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
 				if ( in_array( strtolower( $current_day ), $on_day ) && $current_time >= $start_time &&
 				     $current_time <= $end_time ) {
 
-					$status = MAGESO_Support_Online_Helper::onlineStatus( $end_time, $current_time );
+					$online_status = MAGESO_Support_Online_Helper::onlineStatus( $end_time, $current_time );
 
 					?>
                     <div class='mageso-onlice-sec'>
 
-						<?php echo $status; ?>
+						<?php echo $online_status; ?>
 
                         <h3><?php _e( 'Our office hours', 'mage-support-online' ); ?> </h3>
 						<?php echo date_i18n( 'l', strtotime( $get_week_start_day ) ); ?>
@@ -48,12 +48,12 @@ if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
 					<?php
 				} else {
 
-					$status = MAGESO_Support_Online_Helper::offlineStatus( $on_day, $off_day, $start_time );
+					$offline_status = MAGESO_Support_Online_Helper::offlineStatus( $on_day, $off_day, $start_time );
 
 					?>
                     <div class='mageso-offline-sec'>
 
-						<?php echo $status; ?>
+						<?php echo $offline_status; ?>
 
                         <h3><?php _e( 'Our office hours', 'mage-support-online' ); ?> </h3>
 						<?php echo date_i18n( 'l', strtotime( $get_week_start_day ) ); ?>
@@ -127,8 +127,24 @@ if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
 				$off_day = array();
 			}
 
+
+			$get_holiday = get_option( 'general_setting_sec_pro_holiday' );
+
 			$next_date = date( 'Y-m-d', strtotime( " +1 weekday" ) );
 			$next_day  = date( 'D', strtotime( $next_date ) );
+
+			$get_all_holiday = array();
+
+			foreach ( $get_holiday as $key => $holidays ) {
+				if ( "last_count" != $key ) {
+
+					$holiday_date = strtotime( $holidays['vacation_date'] );
+					$holiday_day  = strtolower( date( 'D', $holiday_date ) );
+
+					$get_all_holiday[] = $holiday_day;
+
+				}
+			}
 
 			if ( in_array( strtolower( $next_day ), $on_day ) ) {
 
@@ -139,14 +155,11 @@ if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
 				$i = 1;
 
 				while ( in_array( strtolower( $next_day ), $off_day ) ) {
-
 					$i ++;
-
 					$next_date = date( 'Y-m-d', strtotime( " +$i day" ) );
 					$next_day  = strtolower( date( 'D', strtotime( $next_date ) ) );
 
 					$todal_number_of_days = $i;
-
 				}
 
 				$in_pos = (int) $todal_number_of_days;
@@ -161,6 +174,25 @@ if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
 				$next_working_day = date( 'Y-m-d', strtotime( " +$in_pos day" ) ) . ' ' .
 				                    $start_time;
 			}
+
+			//Holidays count
+			if ( in_array( strtolower( $next_day ), $get_all_holiday ) ) {
+				$i = 1;
+
+				while ( in_array( strtolower( $next_day ), $get_all_holiday ) ) {
+					$i ++;
+					$next_date = date( 'Y-m-d', strtotime( " +$i day" ) );
+					$next_day  = strtolower( date( 'D', strtotime( $next_date ) ) );
+
+					$todal_number_of_days = $i;
+				}
+
+				$in_pos = (int) $todal_number_of_days;
+
+				date( 'Y-m-d', strtotime( " +$in_pos day" ) );
+				$next_working_day = date( 'Y-m-d', strtotime( " +$in_pos day" ) ) . ' ' . $start_time;
+			}
+
 
 			$current_time = current_time( 'Y-m-d H:i:s' );
 			$start_time   = date( 'Y-m-d H:i:s', strtotime( $next_working_day ) );

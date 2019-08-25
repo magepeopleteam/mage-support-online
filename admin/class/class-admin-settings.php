@@ -42,15 +42,15 @@ if ( ! class_exists( 'MAGESO_Support_Online_Setting_Controls' ) ) {
 		function get_settings_sections() {
 			$sections = array(
 				array(
-					'id'    => 'general_setting_sec',
+					'id'    => 'mage_so_general_setting_sec',
 					'title' => __( 'Working Hours', 'mage-support-online ' )
 				),
 				array(
-					'id'    => 'general_setting_section_timepicker',
+					'id'    => 'mage_so_general_setting_section_timepicker',
 					'title' => __( 'Style & Colors', 'mage-support-online ' )
 				),
 			);
-			do_action('mage_support_setting_tab',$sections );
+
 			return $sections;
 		}
 
@@ -63,7 +63,7 @@ if ( ! class_exists( 'MAGESO_Support_Online_Setting_Controls' ) ) {
 		function get_settings_fields() {
 			$settings_fields = array(
 
-				'general_setting_sec'                => array(
+				'mage_so_general_setting_sec'                => array(
 
 					array(
 						'name'    => 'so_working_day',
@@ -145,7 +145,7 @@ if ( ! class_exists( 'MAGESO_Support_Online_Setting_Controls' ) ) {
 						)
 					),
 				),
-				'general_setting_section_timepicker' => array(
+				'mage_so_general_setting_section_timepicker' => array(
 					//  online sections
 					array(
 						'name'    => 'online_color_sections',
@@ -276,15 +276,15 @@ if ( ! class_exists( 'MAGESO_Support_Online_Setting_Controls' ) ) {
 global $settings;
 $settings = new MAGESO_Support_Online_Setting_Controls();
 
-if(!function_exists('mageso_get_option')){
-	
-function mageso_get_option( $option, $section, $default = '' ) {
-	$options = get_option( $section );
+if ( ! function_exists( 'mageso_get_option' ) ) {
 
-	if ( isset( $options[ $option ] ) && !empty($options[ $option ])) {
-		return $options[ $option ];
+	function mageso_get_option( $option, $section, $default = '' ) {
+		$options = get_option( $section );
+
+		if ( isset( $options[ $option ] ) && ! empty( $options[ $option ] ) ) {
+			return $options[ $option ];
+		}
+
+		return $default;
 	}
-
-	return $default;
-}
 }
