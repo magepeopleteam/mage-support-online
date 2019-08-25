@@ -17,12 +17,12 @@ if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
 		public static function supportStatus() {
 
 			ob_start();
-			$on_day             = mageso_get_option( 'so_working_day', 'general_setting_sec', array() );
-			$off_day            = mageso_get_option( 'so_off_day', 'general_setting_sec', array() );
-			$get_start_time     = mageso_get_option( 'so_start_time', 'general_setting_sec', '9:00 AM' );
-			$get_end_time       = mageso_get_option( 'so_end_time', 'general_setting_sec', '6:00 PM' );
-			$get_week_start_day = mageso_get_option( 'start_weekday', 'general_setting_sec', 'Sunday' );
-			$get_week_end_day   = mageso_get_option( 'end_weekday', 'general_setting_sec', 'Friday' );
+			$on_day             = mageso_get_option( 'so_working_day', 'mage_so_general_setting_sec', array() );
+			$off_day            = mageso_get_option( 'so_off_day', 'mage_general_setting_sec', array() );
+			$get_start_time     = mageso_get_option( 'so_start_time', 'mage_so_general_setting_sec', '9:00 AM' );
+			$get_end_time       = mageso_get_option( 'so_end_time', 'mage_so_general_setting_sec', '6:00 PM' );
+			$get_week_start_day = mageso_get_option( 'start_weekday', 'mage_so_general_setting_sec', 'Sunday' );
+			$get_week_end_day   = mageso_get_option( 'end_weekday', 'mage_so_general_setting_sec', 'Friday' );
 			$start_time         = date( 'H:i:s', strtotime( $get_start_time ) );
 			$end_time           = date( 'H:i:s', strtotime( $get_end_time ) );
 
@@ -128,7 +128,11 @@ if ( ! class_exists( 'MAGESO_Support_Online_Helper' ) ) {
 			}
 
 
-			$get_holiday = get_option( 'general_setting_sec_pro_holiday' );
+			$get_holiday = get_option( 'mage_so_pro_general_setting_sec_holiday' );
+
+			if ( ! is_array( $get_holiday ) ) {
+				$get_holiday = array();
+			}
 
 			$next_date = date( 'Y-m-d', strtotime( " +1 weekday" ) );
 			$next_day  = date( 'D', strtotime( $next_date ) );

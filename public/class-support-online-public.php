@@ -59,17 +59,17 @@ if ( ! class_exists( "MAGESO_Support_Online_Public" ) ) {
 
 public function mageso_custom_style(){
 
-$online_border_color = mageso_get_option( 'border_color', 'general_setting_section_timepicker', 'green' );
-$online_bg_color = mageso_get_option( 'background_color', 'general_setting_section_timepicker', '#f0fff0' );
-$online_text_color = mageso_get_option( 'text_color', 'general_setting_section_timepicker', '#000' );
+$online_border_color = mageso_get_option( 'border_color', 'mage_so_general_setting_section_timepicker', 'green' );
+$online_bg_color = mageso_get_option( 'background_color', 'mage_so_general_setting_section_timepicker', '#f0fff0' );
+$online_text_color = mageso_get_option( 'text_color', 'mage_so_general_setting_section_timepicker', '#000' );
 
 
-$offline_border_color = mageso_get_option( 'offline_border_color', 'general_setting_section_timepicker', 'red' );
-$offline_bg_color = mageso_get_option( 'offline_background_color', 'general_setting_section_timepicker', '#ffe9e9' );
-$offline_text_color = mageso_get_option( 'offline_text_color', 'general_setting_section_timepicker', '#000' );
+$offline_border_color = mageso_get_option( 'offline_border_color', 'mage_so_general_setting_section_timepicker', 'red' );
+$offline_bg_color = mageso_get_option( 'offline_background_color', 'mage_so_general_setting_section_timepicker', '#ffe9e9' );
+$offline_text_color = mageso_get_option( 'offline_text_color', 'mage_so_general_setting_section_timepicker', '#000' );
 
-$clock_bg_color = mageso_get_option( 'clock_background_color', 'general_setting_section_timepicker', '#000' );
-$clock_text_color = mageso_get_option( 'clock_text_color', 'general_setting_section_timepicker', '#fff' );
+$clock_bg_color = mageso_get_option( 'clock_background_color', 'mage_so_general_setting_section_timepicker', '#000' );
+$clock_text_color = mageso_get_option( 'clock_text_color', 'mage_so_general_setting_section_timepicker', '#fff' );
 
 ?>
 <style>
