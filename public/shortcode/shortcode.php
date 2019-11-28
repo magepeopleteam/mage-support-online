@@ -22,7 +22,7 @@ if ( ! class_exists( "MAGESO_Support_Online_Shortcode" ) ) {
 		 */
 		public function display_support_online( $atts, $content = null ) {
 
-			$working_days = mageso_get_option( 'so_working_day', 'mage_so_general_setting_sec', '' );
+			$working_days = mageso_get_option( 'so_working_day', 'mage_so_general_setting_sec', array() );
 
 			if ( ! is_array( $working_days ) ) {
 				$working_days = array();

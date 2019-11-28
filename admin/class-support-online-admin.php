@@ -25,8 +25,7 @@ if ( ! class_exists( "MAGESO_Support_Online_Admin_Base" ) ) {
 
 			wp_enqueue_style( 'mageso-admin-admin-css', MAGESO_SUPPORT_PLUGIN_URL . 'admin/css/mage-plugin-admin.css', array(), time(), 'all' );
 
-			wp_enqueue_style( 'mageso-admin-timepicker', MAGESO_SUPPORT_PLUGIN_URL . 'admin/js/jquery.timepicker
-			.min.css', array(), time(), 'all' );
+			wp_enqueue_style( 'mageso-admin-timepicker', MAGESO_SUPPORT_PLUGIN_URL . 'admin/js/jquery.timepicker.min.css', array(), time(), 'all' );
 
 
 		}//end method enqueue_styles
@@ -38,8 +37,7 @@ if ( ! class_exists( "MAGESO_Support_Online_Admin_Base" ) ) {
 
 			wp_enqueue_script( 'mageso-admin-plugin-js', MAGESO_SUPPORT_PLUGIN_URL . 'admin/js/mage-plugin-admin.js', array( 'jquery' ), time(), true );
 
-			wp_enqueue_script( 'mageso-admin-timepicker-js', MAGESO_SUPPORT_PLUGIN_URL . 'admin/js/jquery
-			.timepicker.min.js', array( 'jquery' ), time(), true );
+			wp_enqueue_script( 'mageso-admin-timepicker-js', MAGESO_SUPPORT_PLUGIN_URL . 'admin/js/jquery.timepicker.min.js', array( 'jquery' ), time(), true );
 
 		}//end method enqueue_scripts
 

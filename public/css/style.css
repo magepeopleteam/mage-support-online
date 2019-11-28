@@ -2,7 +2,7 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
- .mageso-onlice-sec, .mageso-offline-sec {
+.mageso-onlice-sec, .mageso-offline-sec {
     text-align: center;
 }
 
@@ -17,7 +17,6 @@
 
 .mageso-onlice-sec {
     border: 5px solid green;
-    /* display: inline-block; */
     padding: 10px;
     background: #f0fff0;
     margin: 0 auto;
@@ -25,7 +24,7 @@
     color: #000;
 }
 
-.mageso-offline-sec{
+.mageso-offline-sec {
     border: 5px solid red;
     /* display: inline-block; */
     padding: 10px;
@@ -44,5 +43,64 @@
     font-weight: bold;
     display: block;
     border-radius: 5px;
+}
+
+.show_hide_details {
+    margin-top: 11px;
+    margin-left: 2px;
+    font-weight: bold;
+    cursor: pointer;
+    background: black;
+    color: #fff;
+    border-radius: 8px;
+    padding: 0px 6px;
+}
+
+.highlight_current_day {
+    font-weight: bold;
+    font-family: 'Helvetica', Arial, serif;
+    color: green;
+}
+
+.mageso-show-current-time {
+    text-align: center;
+    background: #52514b;
+    color: #fff;
+    width: 25vw;
+    margin: 1px auto;
+    font-weight: bold;
+    display: block;
+    border-radius: 5px;
+}
+
+.mageso-onlice-sec, .mageso-offline-sec {
+    text-align: center;
+}
+
+.mageso-onlice-sec h3, .mageso-offline-sec h3 {
+    font-weight: normal !important;
+    margin: 5px 0 0;
+    padding: 0;
+    text-transform: capitalize;
+    font-size: 20px !important;
+    border-radius: 5px;
+}
+
+.mageso-onlice-sec {
+    border: 5px solid green;
+    padding: 10px;
+    background: #f0fff0;
+    margin: 0 auto;
+    width: 35vw;
+    color: #000;
+}
+
+.mageso-offline-sec {
+    border: 5px solid red;
+    padding: 10px;
+    background: #ffe9e9;
+    margin: 0 auto;
+    width: 36vw;
+    color: #000;
 }
 

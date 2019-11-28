@@ -49,6 +49,14 @@ if ( ! class_exists( 'MAGESO_Support_Online_Setting_Controls' ) ) {
 					'id'    => 'mage_so_general_setting_section_timepicker',
 					'title' => __( 'Style & Colors', 'mage-support-online ' )
 				),
+				array(
+					'id'    => 'mage_so_pro_general_setting_sec',
+					'title' => __( 'Daywise Schedule', 'mage-support-online-pro' )
+				),
+				array(
+					'id'    => 'mage_so_pro_general_setting_sec_holiday',
+					'title' => __( 'Holiday Schedule', 'mage-support-online-pro' )
+				),
 			);
 
 			return $sections;
@@ -240,6 +248,134 @@ if ( ! class_exists( 'MAGESO_Support_Online_Setting_Controls' ) ) {
 						'default' => '#fff'
 					),
 				),
+				
+				
+				'mage_so_pro_general_setting_sec' => array(
+					
+					// Sunday
+					array(
+						'name'        => 'sunday_time_start',
+						'label'       => __( 'Sunday', 'mage-support-online ' ),
+						'type'        => 'day_time_start_end',
+						'input_label' => "Fr",
+						'ex'          => "EX : 9 AM"
+					),
+					array(
+						'name'        => 'sunday_time_end',
+						'label'       => __( '', 'mage-support-online ' ),
+						'type'        => 'day_time_start_end',
+						'input_label' => __( 'To ', 'mage-support-online ' ),
+						'ex'          => "EX : 6 PM"
+					),
+					
+					// Monday
+					array(
+						'name'        => 'monday_time_start',
+						'label'       => __( 'Monday', 'mage-support-online ' ),
+						'type'        => 'day_time_start_end',
+						'input_label' => "Fr",
+						'ex'          => "EX : 9 AM"
+					),
+					array(
+						'name'        => 'monday_time_end',
+						'label'       => __( '', 'mage-support-online ' ),
+						'type'        => 'day_time_start_end',
+						'input_label' => __( 'To ', 'mage-support-online ' ),
+						'ex'          => "EX : 6 PM"
+					),
+					
+					// Tuesday
+					array(
+						'name'        => 'tuesday_time_start',
+						'label'       => __( 'Tuesday', 'mage-support-online ' ),
+						'type'        => 'day_time_start_end',
+						'input_label' => "Fr",
+						'ex'          => "EX : 9 AM"
+					),
+					array(
+						'name'        => 'tuesday_time_end',
+						'label'       => __( '', 'mage-support-online ' ),
+						'type'        => 'day_time_start_end',
+						'input_label' => __( 'To ', 'mage-support-online ' ),
+						'ex'          => "EX : 6 PM"
+					),
+					
+					// Wednesday
+					array(
+						'name'        => 'wednesday_time_start',
+						'label'       => __( 'Wednesday', 'mage-support-online ' ),
+						'type'        => 'day_time_start_end',
+						'input_label' => "Fr",
+						'ex'          => "EX : 9 AM"
+					),
+					array(
+						'name'        => 'wednesday_time_end',
+						'label'       => __( '', 'mage-support-online ' ),
+						'type'        => 'day_time_start_end',
+						'input_label' => __( 'To ', 'mage-support-online ' ),
+						'ex'          => "EX : 6 PM"
+					),
+					
+					// Thusday
+					array(
+						'name'        => 'thursday_time_start',
+						'label'       => __( 'Thusday', 'mage-support-online ' ),
+						'type'        => 'day_time_start_end',
+						'input_label' => "Fr",
+						'ex'          => "EX : 9 AM"
+					),
+					array(
+						'name'        => 'thursday_time_end',
+						'label'       => __( '', 'mage-support-online ' ),
+						'type'        => 'day_time_start_end',
+						'input_label' => __( 'To ', 'mage-support-online ' ),
+						'ex'          => "EX : 6 PM"
+					),
+					
+					// Friday
+					array(
+						'name'        => 'friday_time_start',
+						'label'       => __( 'Friday', 'mage-support-online ' ),
+						'type'        => 'day_time_start_end',
+						'input_label' => "Fr",
+						'ex'          => "EX : 9 AM"
+					),
+					array(
+						'name'        => 'friday_time_end',
+						'label'       => __( '', 'mage-support-online ' ),
+						'type'        => 'day_time_start_end',
+						'input_label' => __( 'To ', 'mage-support-online ' ),
+						'ex'          => "EX : 6 PM"
+					),
+					
+					// Saturday
+					array(
+						'name'        => 'saturday_time_start',
+						'label'       => __( 'Saturday', 'mage-support-online ' ),
+						'type'        => 'day_time_start_end',
+						'input_label' => "Fr",
+						'ex'          => "EX : 9 AM"
+					),
+					array(
+						'name'        => 'saturday_time_end',
+						'label'       => __( '', 'mage-support-online ' ),
+						'type'        => 'day_time_start_end',
+						'input_label' => __( 'To ', 'mage-support-online-pro' ),
+						'ex'          => "EX : 6 PM"
+					),
+				), //end sections general_setting_sec_pro
+				
+				'mage_so_pro_general_setting_sec_holiday' => array(
+					array(
+						'name'  => 'vacation',
+						'label' => __( 'Vacation', 'mage-support-online-pro ' ),
+						'type'  => 'vacation',
+					),
+				),
+				
+				
+				
+				
 			);
 
 			return $settings_fields;

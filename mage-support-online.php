@@ -38,32 +38,32 @@ register_deactivation_hook( __FILE__, 'mageso_deactivate_support_online_plugin' 
 
 
 if ( ! class_exists( "MAGESO_Support_Online_Base" ) ) {
-
+	
 	class MAGESO_Support_Online_Base {
-
+		
 		public function __construct() {
 			$this->define_constants();
 			$this->load_main_class();
 			$this->run_mage_plugin();
 		}
-
+		
 		public function define_constants() {
 			define( 'MAGESO_SUPPORT_PLUGIN_URL', WP_PLUGIN_URL . '/' . plugin_basename( dirname( __FILE__ ) ) . '/' );
 			define( 'MAGESO_SUPPORT_ONLINE_DIR', plugin_dir_path( __FILE__ ) );
 			define( 'MAGESO_SUPPORT_ONLINE_FILE', plugin_basename( __FILE__ ) );
 		}
-
+		
 		public function load_main_class() {
 			require MAGESO_SUPPORT_ONLINE_DIR . 'includes/class-support-online.php';
 			require MAGESO_SUPPORT_ONLINE_DIR . 'includes/class-support-online-loader.php';
 			require MAGESO_SUPPORT_ONLINE_DIR . 'includes/class-support-online-helper.php';
 		}
-
+		
 		public function run_mage_plugin() {
 			$plugin = new MAGESO_Support_Online_Loader();
 			$plugin->run();
 		}
-
+		
 	}//end MAGESO_Support_Online_Base
 }//end class exist block
 
